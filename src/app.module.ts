@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { TextBlockModule } from './text-block/text-block.module';
 import { FilesModule } from './files/files.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
+import * as path from "path";
 
 
 
@@ -26,6 +28,9 @@ import { FilesModule } from './files/files.module';
       database: process.env.POSTGRES_DB,
       models: [],
       autoLoadModels: true
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: path.resolve(__dirname, 'static', 'img', 'jpg')
     }),
     UsersModule,
     RolesModule,
